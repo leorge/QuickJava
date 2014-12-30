@@ -1,5 +1,5 @@
 QuickJava
 =========
 
-Improve quicksort in http://algs4.cs.princeton.edu/23quicksort/
+Visit [Home](https://github.com/leorge/QuickJava/wiki)
 
