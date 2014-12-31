@@ -1,0 +1,53 @@
+51,58c51,71
+<         int lt = lo, gt = hi;
+<         Comparable v = a[lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1))];
+<         int i = lo;
+<         while (i <= gt) {
+<             int cmp = a[i].compareTo(v);
+<             if      (cmp < 0) exch(a, lt++, i++);
+<             else if (cmp > 0) exch(a, i, gt--);
+<             else              i++;
+---
+>         int j = lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) / 2));
+>         Comparable v = a[j];	// Save a pivot
+>         a[j] = a[hi];			// dig a hole
+>         int	hole = hi;
+>         j = hi - 1;
+>         int	k = -1;	// to exclude continuous equl elements from partitioning
+>         for (int i = lo; i < hole; i++) {
+>         	if (a[i].compareTo(v) >= 0) {
+>         		a[hole] = a[i];
+>         		hole = i;	// move a hole
+>         		for (; j > hole; j--) {	// asymmetric serach
+>             		int	sign = a[j].compareTo(v);
+>             		if (sign < 0) {
+>             			a[hole] = a[j];
+>             			hole = j;
+>             			k = -1;		// reset
+>             		}
+>             		else if (sign > 0) k = -1;	// reset
+>             		else if (k < 0) k = j;		// start equal element
+>         		}
+>         	}
+60,63c73,75
+< 
+<         // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi]. 
+<         sort(a, lo, lt-1, depth);
+<         sort(a, gt+1, hi, depth);
+---
+>         a[hole] = v;	// burry the hole
+>         sort(a, lo, hole - 1, depth);
+>         sort(a, (k < 0 ? hole : k) + 1, hi, depth);
+75,86d86
+<     }
+< 
+<     // does v == w ?
+<     private static boolean eq(Comparable v, Comparable w) {
+<         return (v.compareTo(w) == 0);
+<     }
+<         
+<     // exchange a[i] and a[j]
+<     private static void exch(Object[] a, int i, int j) {
+<         Object swap = a[i];
+<         a[i] = a[j];
+<         a[j] = swap;
