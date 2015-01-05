@@ -41,7 +41,7 @@ sub qsort() {
 		my $m3 = &med3($#_ - $eps - $eps, $#_ - $eps, $#_, @_);
 		$pivot = &med3($m1, $m2, $m3, @_);
 		$v = $_[$pivot];
-	$TRACE && print "pivot $v is at $pivot in ($_[0],..,$_[$eps],..,$_[$#_-$eps],..,$_[$#_-3],$_[$#_-2],$_[$#_-1],$_[$#_]) N = $N\n";
+	$TRACE && print "pivot $v is at $pivot in ($_[0],..,$_[$eps],......,$_[$#_-$eps],..,$_[$#_-3],$_[$#_-2],$_[$#_-1],$_[$#_]) N = $N\n";
 	}
 	@_ = &exch(0, $pivot, @_);
 	# Bentley-McIlroy 3-way partitioning
