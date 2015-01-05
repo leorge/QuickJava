@@ -1,0 +1,19 @@
+43,44c43,44
+<         assert isSorted(a, lo, mid);
+<         assert isSorted(a, mid+1, hi);
+---
+> //        assert isSorted(a, lo, mid);
+> //        assert isSorted(a, mid+1, hi);
+61c61
+<         assert isSorted(a, lo, hi);
+---
+> //        assert isSorted(a, lo, hi);
+80d79
+<         assert isSorted(a);
+174a174
+>         Stopwatch when = new Stopwatch();
+176c176,177
+<         show(a);
+---
+>         if (isSorted(a)) StdOut.println("Merge sec. = " + when.elapsedTime());
+>         else show(a);
