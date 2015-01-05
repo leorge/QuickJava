@@ -1,0 +1,65 @@
+35c35,36
+<     private static final int CUTOFF = 5;  // cutoff to middle pivot, must be >= 1
+---
+>     private static final int CUTOFF = 8;  // cutoff to middle pivot, must be >= 1
+> 	private static final double Log2 = Math.log(2);
+45c46
+<         sort(a, 0, a.length - 1, 0);
+---
+>         sort(a, 0, a.length - 1);
+48,49c49,50
+<     // quicksort the subarray a[lo .. hi] using 3-way partitioning
+<     private static void sort(Comparable[] a, int lo, int hi, int depth) { 
+---
+>     // quicksort the subarray a[lo .. hi]
+>     private static void sort(Comparable[] a, int lo, int hi) { 
+51c52,62
+<         int j = lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) / 2));
+---
+> 		int i, j, N = hi - lo + 1;	// Number of elements
+> 		if (N < CUTOFF) j = lo + (hi - lo) / 2;		// middle element
+> 		else {
+> 			int L = ((int)(Math.log(N) / Log2) - 1) | 1;	// odd(log2(N))
+> 			int[] index = new int[L];
+> 			int	D = (int)(N / L);		// Block size (= Distance)
+> 			j = lo + StdRandom.uniform(D);
+> 			for (i = 0; i < L; i++, j += D) index[i] = j;
+> 			sortIndex(a, index, 0, L - 1);
+> 			j = index[L >> 1];			// middle index
+> 		}
+57c68
+<         for (int i = lo; i < hole; i++) {
+---
+>         for (i = lo; i < hole; i++) {
+74,75c85,86
+<         sort(a, lo, hole - 1, depth);
+<         sort(a, (k < 0 ? hole : k) + 1, hi, depth);
+---
+>         sort(a, lo, hole - 1);
+>         sort(a, (k < 0 ? hole : k) + 1, hi);
+78c89,111
+< 
+---
+> 	// quicksort the index[lo..hi] with the simplest hole method
+> 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi) {
+> 		if (hi <= lo) return;
+> 		int hole = hi;
+> 		int	last = index[hole];
+> 		Comparable v = a[last];
+> 		int j = hi - 1;
+> 		for (int i = lo; i < hole; i++) {
+> 			if (a[index[i]].compareTo(v) >= 0) {
+> 				index[hole] = index[i];
+> 				hole = i;
+> 				for (; j > hole; j--) {
+> 					if(a[index[j]].compareTo(v) < 0) {
+> 						index[hole] = index[j];
+> 						hole = j;
+> 					}
+> 				}
+> 			}
+> 		}
+> 		index[hole] = last;
+> 		sortIndex(a, index, lo, hole - 1);
+> 		sortIndex(a, index, hole + 1, hi);
+> 	}
