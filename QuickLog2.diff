@@ -1,7 +1,7 @@
 35c35,36
 <     private static final int CUTOFF = 5;  // cutoff to middle pivot, must be >= 1
 ---
->     private static final int CUTOFF = 8;  // cutoff to middle pivot, must be >= 1
+>     private static final int CUTOFF = 40;  // cutoff to middle pivot, must be >= 1
 > 	private static final double Log2 = Math.log(2);
 45c46
 <         sort(a, 0, a.length - 1, 0);
