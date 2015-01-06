@@ -1,9 +1,10 @@
 155a156
 >         Stopwatch when = new Stopwatch();
-157c158,159
+157c158,160
 <         show(a);
 ---
->         if (isSorted(a)) StdOut.println("QuickX sec. = " + when.elapsedTime());
+>         double elapsedTime = when.elapsedTime();
+>         if (isSorted(a)) StdOut.println("QuickX sec. = " + elapsedTime);
 >         else show(a);
-159d160
+159d161
 < 
