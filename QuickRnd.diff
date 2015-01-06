@@ -1,41 +1,21 @@
-diff -r cc4773d4b8da QuickRnd.java
---- a/QuickRnd.java	Wed Dec 31 04:03:45 2014 +0900
-+++ b/QuickRnd.java	Wed Dec 31 04:04:26 2014 +0900
-@@ -32,6 +32,7 @@
-  *  @author Kevin Wayne
-  */
- public class QuickRnd {
-+    private static final int CUTOFF = 5;  // cutoff to middle pivot, must be >= 1
- 
-     // This class should not be instantiated.
-     private QuickRnd() { }
-@@ -41,15 +42,14 @@
-      * @param a the array to be sorted
-      */
-     public static void sort(Comparable[] a) {
--        StdRandom.shuffle(a);
--        sort(a, 0, a.length - 1);
-+        sort(a, 0, a.length - 1, 0);
-     }
- 
-     // quicksort the subarray a[lo .. hi] using 3-way partitioning
--    private static void sort(Comparable[] a, int lo, int hi) { 
-+    private static void sort(Comparable[] a, int lo, int hi, int depth) { 
-         if (hi <= lo) return;
-         int lt = lo, gt = hi;
--        Comparable v = a[lo];
-+        Comparable v = a[lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1))];
-         int i = lo;
-         while (i <= gt) {
-             int cmp = a[i].compareTo(v);
-@@ -59,8 +59,8 @@
-         }
- 
-         // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi]. 
--        sort(a, lo, lt-1);
--        sort(a, gt+1, hi);
-+        sort(a, lo, lt-1, depth);
-+        sort(a, gt+1, hi, depth);
-     }
- 
- 
+34a35
+>     private static final int CUTOFF = 5;  // cutoff to middle pivot, must be >= 1
+44,45c45
+<         StdRandom.shuffle(a);
+<         sort(a, 0, a.length - 1);
+---
+>         sort(a, 0, a.length - 1, 0);
+49c49
+<     private static void sort(Comparable[] a, int lo, int hi) { 
+---
+>     private static void sort(Comparable[] a, int lo, int hi, int depth) { 
+52c52
+<         Comparable v = a[lo];
+---
+>         Comparable v = a[lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1))];
+62,63c62,63
+<         sort(a, lo, lt-1);
+<         sort(a, gt+1, hi);
+---
+>         sort(a, lo, lt-1, depth);
+>         sort(a, gt+1, hi, depth);
