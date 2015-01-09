@@ -41,7 +41,7 @@ public class StdSort {
         Stopwatch when = new Stopwatch();
         java.util.Arrays.sort(a);
         double elapsedTime = when.elapsedTime();
-        if (isSorted(a)) StdOut.println("Arrays.Sort sec. = " + elapsedTime);
+        if (isSorted(a)) StdOut.println("Arrays.sort sec. = " + elapsedTime);
         else show(a);
     }
 }
