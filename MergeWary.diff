@@ -1,10 +1,10 @@
-44,48d43
+45,49d44
 <         // copy to aux[]
 <         for (int k = lo; k <= hi; k++) {
 <             aux[k] = a[k]; 
 <         }
 < 
-65,67c60,62
+66,68c61,63
 <         sort(a, aux, lo, mid);
 <         sort(a, aux, mid + 1, hi);
 <         merge(a, aux, lo, mid, hi);
@@ -12,7 +12,7 @@
 >         sort(aux, a, lo, mid);
 >         sort(aux, a, mid + 1, hi);
 >         merge(aux, a, lo, mid, hi);
-76c71,72
+77c72,73
 <         sort(a, aux, 0, a.length-1);
 ---
 >         for (int i = 0; i < a.length; i++) aux[i] = a[i];
