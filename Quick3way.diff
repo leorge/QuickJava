@@ -1,10 +1,12 @@
-46d45
+32a33
+>  *  @Editor Leorge Takeuchi Jan. 2015
+46d46
 <         assert isSorted(a);
-65d63
+65d64
 <         assert isSorted(a, lo, hi);
-119a118
+119a119
 >         Stopwatch when = new Stopwatch();
-121c120,122
+121c121,123
 <         show(a);
 ---
 >         double elapsedTime = when.elapsedTime();
