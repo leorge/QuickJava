@@ -1,20 +1,24 @@
-71d70
+35c35
+<  */
+---
+> */
+72d71
 <         for (int i = 0; i < a.length; i++) aux[i] = a[i];
-113,117d111
+114,118d112
 <         // copy to aux[]
 <         for (int k = lo; k <= hi; k++) {
 <             aux[k] = index[k]; 
 <         }
 < 
-134c128
+135c129
 <     public static int[] indexSort(Comparable[] a) {
 ---
 >     public static void indexSort(Comparable[] a) {
-137,139d130
+138,140d131
 <         for (int i = 0; i < N; i++)
 <             index[i] = i;
 < 
-141,142c132,144
+142,143c133,145
 <         sort(a, index, aux, 0, N-1);
 <         return index;
 ---
@@ -31,7 +35,7 @@
 > 				a[index[j] = j] = v;
 > 			}
 > 		}
-149,151c151,153
+150,152c152,154
 <         sort(a, index, aux, lo, mid);
 <         sort(a, index, aux, mid + 1, hi);
 <         merge(a, index, aux, lo, mid, hi);
@@ -39,7 +43,7 @@
 >         sort(a, aux, index, lo, mid);		// recursive
 >         sort(a, aux, index, mid + 1, hi);
 >         merge(a, aux, index, lo, mid, hi);	// Index mergesort above
-168c170
+169c171
 <         MergeWidx.sort(a);
 ---
 >         MergeWidx.indexSort(a);
