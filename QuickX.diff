@@ -1,10 +1,12 @@
-155a156
+24a25
+>  *  @Editor Leorge Takeuchi Jan. 2015
+155a157
 >         Stopwatch when = new Stopwatch();
-157c158,160
+157c159,161
 <         show(a);
 ---
 >         double elapsedTime = when.elapsedTime();
 >         if (isSorted(a)) StdOut.println("QuickX sec. = " + elapsedTime);
 >         else show(a);
-159d161
+159d162
 < 
