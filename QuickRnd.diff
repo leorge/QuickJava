@@ -1,19 +1,19 @@
-34a35
+35a36
 >     private static final int CUTOFF = 5;  // cutoff to middle pivot, must be >= 1
-44,45c45
+45,46c46
 <         StdRandom.shuffle(a);
 <         sort(a, 0, a.length - 1);
 ---
 >         sort(a, 0, a.length - 1, 0);
-49c49
+50c50
 <     private static void sort(Comparable[] a, int lo, int hi) { 
 ---
 >     private static void sort(Comparable[] a, int lo, int hi, int depth) { 
-52c52
+53c53
 <         Comparable v = a[lo];
 ---
 >         Comparable v = a[lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1))];
-62,63c62,63
+63,64c63,64
 <         sort(a, lo, lt-1);
 <         sort(a, gt+1, hi);
 ---
