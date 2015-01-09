@@ -1,13 +1,19 @@
-43,44d42
+33a34
+>  *  @Editor Leorge Takeuchi Jan. 2015
+43,44d43
 <         assert isSorted(a, lo, mid);
 <         assert isSorted(a, mid+1, hi);
-61d58
+61d59
 <         assert isSorted(a, lo, hi);
-80d76
+65c63
+<     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+---
+>     public static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+80d77
 <         assert isSorted(a);
-174a171
+174a172
 >         Stopwatch when = new Stopwatch();
-176c173,175
+176c174,176
 <         show(a);
 ---
 >         double elapsedTime = when.elapsedTime();
