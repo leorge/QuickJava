@@ -1,0 +1,8 @@
+#!/bin/sh -v
+for N in 2000000 4000000 8000000; do  echo "N =" $N
+    ./random.awk $N > tmp$$
+    for a in Merge MergeWary MergeInsert QuickX QuickLog2 QuickMerge StdSort; do
+        java -cp :. $a < tmp$$
+    done
+    echo ""
+done
