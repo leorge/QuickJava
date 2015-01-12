@@ -35,4 +35,4 @@ patch QuickInsert.java QuickInsert.diff
 javac -cp :. QuickInsert.java
 
 # Make a test program for Arrays.sort
-javac -cp :. StdSort.java
+javac -cp :. ArraysSort.java

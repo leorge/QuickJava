@@ -1,7 +1,7 @@
-public class StdSort {
+public class ArraysSort {
 
     // This class should not be instantiated.
-    private StdSort() { }
+    private ArraysSort() { }
 
     /***********************************************************************
      *  Helper sorting functions
@@ -42,6 +42,6 @@ public class StdSort {
         java.util.Arrays.sort(a);
         double elapsedTime = when.elapsedTime();
         show(a);
-        if (isSorted(a)) StdOut.println("Arrays.sort sec. = " + elapsedTime);
+        if (isSorted(a)) StdOut.println("ArraysSort sec. = " + elapsedTime);
     }
 }
