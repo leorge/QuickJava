@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Download and expand standard library
+wget http://introcs.cs.princeton.edu/java/stdlib/stdlib.jar
+jar xf stdlib.jar
+
+# Download and build Quick3way.java
+wget http://algs4.cs.princeton.edu/23quicksort/Quick3way.java
+patch Quick3way.java Quick3way.diff
+javac -cp :. Quick3way.java
+
+# Download and build QuickX.java
+wget http://algs4.cs.princeton.edu/23quicksort/QuickX.java
+patch QuickX.java QuickX.diff
+javac -cp :. QuickX.java
+
+# Make a random pivot program
+sed s/3way/Rnd/g Quick3way.java > QuickRnd.java
+patch QuickRnd.java QuickRnd.diff
+javac -cp :. QuickRnd.java
+
+# Make a hole method program
+sed s/Rnd/Hole/g QuickRnd.java > QuickHole.java
+patch QuickHole.java QuickHole.diff
+javac -cp :. QuickHole.java
+
+# Make a median of log2(N) pivot program
+sed s/Hole/Log2/g QuickHole.java > QuickLog2.java
+patch QuickLog2.java QuickLog2.diff
+javac -cp :. QuickLog2.java
+
+# Make a hybrid sorting program
+sed s/Log2/Insert/g QuickLog2.java > QuickInsert.java
+patch QuickInsert.java QuickInsert.diff
+javac -cp :. QuickInsert.java
+
