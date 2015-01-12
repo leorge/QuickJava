@@ -1,4 +1,4 @@
-#!/bin/sh -v
+#!/bin/sh
 for N in 2000000 4000000 8000000; do
     echo "N =" $N
     ./random.awk $N > tmp$$
