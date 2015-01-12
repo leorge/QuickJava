@@ -24,19 +24,11 @@
 >                 exch(a, j, j-1);
 >     }
 > 
-113a125,131
+112a124,130
+> 
 >     // return the index of the median element among a[i], a[j], and a[k]
 >     private static int median3(Comparable[] a, int i, int j, int k) {
 >         return (less(a[i], a[j]) ?
 >                (less(a[j], a[k]) ? j : less(a[i], a[k]) ? k : i) :
 >                (less(a[k], a[j]) ? j : less(a[k], a[i]) ? k : i));
 >     }
-> 
-120a139,145
->     }
-> 
->     // exchange a[i] and a[j]
->     private static void exch(Object[] a, int i, int j) {
->         Object swap = a[i];
->         a[i] = a[j];
->         a[j] = swap;
