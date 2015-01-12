@@ -6,5 +6,5 @@
 <         show(a);
 ---
 >         double elapsedTime = when.elapsedTime();
->         if (isSorted(a)) StdOut.println("Merge sec. = " + elapsedTime);
+>         if (isSorted(a)) StdOut.println("MergeX sec. = " + elapsedTime);
 >         else show(a);
