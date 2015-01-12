@@ -34,3 +34,5 @@ sed s/Log2/Insert/g QuickLog2.java > QuickInsert.java
 patch QuickInsert.java QuickInsert.diff
 javac -cp :. QuickInsert.java
 
+# Make a test program for Arrays.sort
+javac -cp :. StdSort.java
