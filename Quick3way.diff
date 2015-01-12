@@ -1,0 +1,12 @@
+32a33
+>  *  @Editor Leorge Takeuchi Jan. 2015
+46d46
+<         assert isSorted(a);
+65d64
+<         assert isSorted(a, lo, hi);
+119a119
+>         Stopwatch when = new Stopwatch();
+120a121
+>         double elapsedTime = when.elapsedTime();
+121a123
+>         if (isSorted(a)) StdOut.println("Quick3way sec. = " + elapsedTime);
