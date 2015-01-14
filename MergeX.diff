@@ -1,6 +1,8 @@
-140a141
+33a34
+>  *  @Editor Leorge Takeuchi Jan. 2015
+140a142
 >         Stopwatch when = new Stopwatch();
-141a143
+141a144
 >         double elapsedTime = when.elapsedTime();
-142a145
+142a146
 >         if (isSorted(a)) StdOut.println("MergeX sec. = " + elapsedTime);
