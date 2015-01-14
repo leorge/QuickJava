@@ -1,0 +1,6 @@
+140a141
+>         Stopwatch when = new Stopwatch();
+141a143
+>         double elapsedTime = when.elapsedTime();
+142a145
+>         if (isSorted(a)) StdOut.println("MergeX sec. = " + elapsedTime);
