@@ -27,3 +27,6 @@ javac -cp :. QuickInsert.java
 
 # Make a test program for Arrays.sort
 javac -cp :. ArraysSort.java
+
+# Make a dummy program
+javac -cp :. DummySort.java
