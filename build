@@ -14,6 +14,11 @@ wget http://algs4.cs.princeton.edu/23quicksort/QuickX.java
 patch QuickX.java QuickX.diff
 javac -cp :. QuickX.java
 
+# Download and build MergeX.java
+wget http://algs4.cs.princeton.edu/22mergesort/MergeX.java
+patch MergeX.java MergeX.diff
+javac -cp :. MergeX.java
+
 # Make a random pivot program
 sed s/3way/Rnd/g Quick3way.java > QuickRnd.java
 patch QuickRnd.java QuickRnd.diff
@@ -29,7 +34,12 @@ sed s/Hole/Log2/g QuickHole.java > QuickLog2.java
 patch QuickLog2.java QuickLog2.diff
 javac -cp :. QuickLog2.java
 
-# Make a hybrid sorting program
+# Make a hybrid sorting program with Merge sort
+sed s/Log2/Merge/g QuickLog2.java > QuickMerge.java
+patch QuickMerge.java QuickMerge.diff
+javac -cp:. QuickMerge.java
+
+# Make a hybrid sorting program with Insertion sort
 sed s/Log2/Insert/g QuickLog2.java > QuickInsert.java
 patch QuickInsert.java QuickInsert.diff
 javac -cp :. QuickInsert.java
