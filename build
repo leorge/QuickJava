@@ -18,7 +18,7 @@ javac -cp :. QuickLog2.java
 # Make a hybrid sorting program with Merge sort
 sed s/Log2/Merge/g QuickLog2.java > QuickMerge.java
 patch QuickMerge.java QuickMerge.diff
-javac -cp:. QuickMerge.java
+javac -cp :. QuickMerge.java
 
 # Make a hybrid sorting program with Insertion sort
 sed s/Log2/Insert/g QuickLog2.java > QuickInsert.java
