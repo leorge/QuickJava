@@ -1,0 +1,29 @@
+36d35
+<     private static final int CUTOFF = 40;  // cutoff to middle pivot, must be >= 1
+47c46
+<         sort(a, 0, a.length - 1);
+---
+>         sort(a, 0, a.length - 1, (int)(Math.log(a.length) / Log2) / 2);
+51c50
+<     private static void sort(Comparable[] a, int lo, int hi) { 
+---
+>     private static void sort(Comparable[] a, int lo, int hi, int depth) { 
+54,55c53,57
+< 		if (N == 2) {
+< 			if (less(a[hi], a[lo])) exch(a, lo, hi);
+---
+> 		if (depth == 0) {
+> 			Comparable[] aux = new Comparable[N];
+> 			System.arraycopy(a, lo, aux, 0, N);
+> 			MergeX.sort(aux);
+> 			System.arraycopy(aux, 0, a, lo, N);
+58d59
+< 		if (N <= CUTOFF) j = lo + (hi - lo) / 2;		// middle element
+59a61
+> 			depth--;
+90,91c92,93
+<         sort(a, lo, hole - 1);
+<         sort(a, (k < 0 ? hole : k) + 1, hi);
+---
+>         sort(a, lo, hole - 1, depth);
+>         sort(a, (k < 0 ? hole : k) + 1, hi, depth);
