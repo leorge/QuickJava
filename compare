@@ -1,9 +1,10 @@
 #!/bin/sh
 for N in 2000000 4000000 8000000; do
     echo "N =" $N
-    ./random.awk $N > tmp$$
+    ./random.awk $N > data$$
     for a in $@; do
-        java -cp :. $a < tmp$$
+        java -cp :. $a < data$$
     done | awk 'NF>1'
     echo ""
 done
+rm data$$
