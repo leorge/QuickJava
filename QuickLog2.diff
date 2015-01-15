@@ -13,10 +13,14 @@
 ---
 >     // quicksort the subarray a[lo .. hi]
 >     private static void sort(Comparable[] a, int lo, int hi) { 
-52c53,63
+52c53,67
 <         int j = lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) / 2));
 ---
 > 		int i, j, N = hi - lo + 1;	// Number of elements
+> 		if (N == 2) {
+> 			if (less(a[hi], a[lo])) exch(a, lo, hi);
+> 			return;
+> 		}
 > 		if (N <= CUTOFF) j = lo + (hi - lo) / 2;		// middle element
 > 		else {
 > 			int L = ((int)(Math.log(N) / Log2) - 1) | 1;	// odd(log2(N))
@@ -27,17 +31,17 @@
 > 			sortIndex(a, index, 0, L - 1);
 > 			j = index[L >> 1];			// middle index
 > 		}
-58c69
+58c73
 <         for (int i = lo; i < hole; i++) {
 ---
 >         for (i = lo; i < hole; i++) {
-75,76c86,87
+75,76c90,91
 <         sort(a, lo, hole - 1, depth);
 <         sort(a, (k < 0 ? hole : k) + 1, hi, depth);
 ---
 >         sort(a, lo, hole - 1);
 >         sort(a, (k < 0 ? hole : k) + 1, hi);
-79c90,112
+79c94,116
 < 
 ---
 > 	// quicksort the index[lo..hi] with the simplest hole method
