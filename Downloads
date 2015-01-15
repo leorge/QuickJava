@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Download from princeton.edu
+
+# Download and expand standard library
+wget http://introcs.cs.princeton.edu/java/stdlib/stdlib.jar
+jar xf stdlib.jar
+
+# Download and build Quick3way.java
+wget http://algs4.cs.princeton.edu/23quicksort/Quick3way.java
+patch Quick3way.java Quick3way.diff
+javac -cp :. Quick3way.java
+
+# Download and build QuickX.java
+wget http://algs4.cs.princeton.edu/23quicksort/QuickX.java
+patch QuickX.java QuickX.diff
+javac -cp :. QuickX.java
+
+# Download and build MergeX.java
+wget http://algs4.cs.princeton.edu/22mergesort/MergeX.java
+patch MergeX.java MergeX.diff
+javac -cp :. MergeX.java
+
+
