@@ -38,9 +38,9 @@ public class ArraysSort {
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        Stopwatch when = new Stopwatch();
+        Stopwatch timer = new Stopwatch();
         java.util.Arrays.sort(a);
-        double elapsedTime = when.elapsedTime();
+        double elapsedTime = timer.elapsedTime();
         show(a);
         if (isSorted(a)) StdOut.println("ArraysSort sec. = " + elapsedTime);
     }
