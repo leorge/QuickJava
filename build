@@ -4,29 +4,35 @@
 sed s/3way/Rnd/g Quick3way.java > QuickRnd.java
 patch QuickRnd.java QuickRnd.diff
 javac -cp :. QuickRnd.java
+if [ $? -ne 0 ]; then exit; fi
 
 # Make a hole method program
 sed s/Rnd/Hole/g QuickRnd.java > QuickHole.java
 patch QuickHole.java QuickHole.diff
 javac -cp :. QuickHole.java
+if [ $? -ne 0 ]; then exit; fi
 
 # Make a median of log2(N) pivot program
 sed s/Hole/Log2/g QuickHole.java > QuickLog2.java
 patch QuickLog2.java QuickLog2.diff
 javac -cp :. QuickLog2.java
+if [ $? -ne 0 ]; then exit; fi
 
 # Make a hybrid sorting program with Merge sort
 sed s/QuickLog2/QuickMerge/g QuickLog2.java > QuickMerge.java
 patch QuickMerge.java QuickMerge.diff
 javac -cp :. QuickMerge.java
+if [ $? -ne 0 ]; then exit; fi
 
 # Make a hybrid sorting program with Insertion sort
 sed s/QuickLog2/QuickInsert/g QuickLog2.java > QuickInsert.java
 patch QuickInsert.java QuickInsert.diff
 javac -cp :. QuickInsert.java
+if [ $? -ne 0 ]; then exit; fi
 
 # Make a test program for Arrays.sort
 javac -cp :. ArraysSort.java
+if [ $? -ne 0 ]; then exit; fi
 
 # Make a dummy program
 javac -cp :. DummySort.java
