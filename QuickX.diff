@@ -1,9 +1,9 @@
 24a25
 >  *  @Editor Leorge Takeuchi Jan. 2015
 155a157
->         Stopwatch when = new Stopwatch();
+>         Stopwatch timer = new Stopwatch();
 156a159
->         double elapsedTime = when.elapsedTime();
+>         double elapsedTime = timer.elapsedTime();
 157a161
 >         if (isSorted(a)) StdOut.println("QuickX sec. = " + elapsedTime);
 159d162

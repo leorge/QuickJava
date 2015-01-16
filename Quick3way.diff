@@ -5,8 +5,8 @@
 65d64
 <         assert isSorted(a, lo, hi);
 119a119
->         Stopwatch when = new Stopwatch();
+>         Stopwatch timer = new Stopwatch();
 120a121
->         double elapsedTime = when.elapsedTime();
+>         double elapsedTime = timer.elapsedTime();
 121a123
 >         if (isSorted(a)) StdOut.println("Quick3way sec. = " + elapsedTime);
