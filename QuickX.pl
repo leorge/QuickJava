@@ -5,6 +5,9 @@
 #	./KillQuickX.pl n | xargs ./QuickX.pl
 #	./random.awk n | xargs ./QuickX.pl
 #
+#	Don't use too large N to prevent from too deep recursion.
+#   N<=100 is recommended.
+#
 #	Original Java program
 #		http://algs4.cs.princeton.edu/23quicksort/QuickX.java
 #
