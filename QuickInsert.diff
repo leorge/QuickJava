@@ -1,20 +1,15 @@
-36c36
-<     private static final int CUTOFF = 40;  // cutoff to middle pivot, must be >= 1
+37c37
+<     private static final double Log2 = Math.log(2);
 ---
->     private static final int CUTOFF = 7;  // cutoff to middle pivot, must be >= 1
-54,56c54,56
-< 		if (N == 2) {
-< 			if (less(a[hi], a[lo])) exch(a, lo, hi);
-< 			return;
+> 	private static final double Log2 = Math.log(2);
+56c56,59
+< 		if (N <= CUTOFF) j = lo + ((hi - lo) >> 1);
 ---
 > 		if (N <= CUTOFF) {
 >             insertionSort(a, lo, hi);
 >             return;
-58c58
-< 		if (N <= CUTOFF) j = lo + (hi - lo) / 2;		// middle element
----
-> 		else if (N <= 40) j = median3(a, lo, lo + N/2, hi);
-93a94,100
+> 		}
+93a97,103
 >     // sort from a[lo] to a[hi] using insertion sort
 >     private static void insertionSort(Comparable[] a, int lo, int hi) {
 >         for (int i = lo; i <= hi; i++)
@@ -22,11 +17,7 @@
 >                 exch(a, j, j-1);
 >     }
 > 
-116a124,130
-> 
->     // return the index of the median element among a[i], a[j], and a[k]
->     private static int median3(Comparable[] a, int i, int j, int k) {
->         return (less(a[i], a[j]) ?
->                (less(a[j], a[k]) ? j : less(a[i], a[k]) ? k : i) :
->                (less(a[k], a[j]) ? j : less(a[k], a[i]) ? k : i));
->     }
+125c135
+<     /***********************************************************************
+---
+>    /***********************************************************************
