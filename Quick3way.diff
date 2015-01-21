@@ -1,9 +1,5 @@
 32a33
 >  *  @Editor Leorge Takeuchi Jan. 2015
-46d46
-<         assert isSorted(a);
-65d64
-<         assert isSorted(a, lo, hi);
 119a119
 >         Stopwatch timer = new Stopwatch();
 120a121
