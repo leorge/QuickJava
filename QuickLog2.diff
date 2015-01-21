@@ -1,49 +1,45 @@
-36c36,37
+36c36,38
 <     private static final int CUTOFF = 5;  // cutoff to middle pivot, must be >= 1
 ---
->     private static final int CUTOFF = 40;  // cutoff to middle pivot, must be >= 1
-> 	private static final double Log2 = Math.log(2);
-46c47
+>     private static final int CUTOFF = 8;  // cutoff to middle pivot, must be >= 1
+>     private static final double Log2 = Math.log(2);
+>     private static final double rand = StdRandom.uniform();	// [0, 1)
+46c48
 <         sort(a, 0, a.length - 1, 0);
 ---
 >         sort(a, 0, a.length - 1);
-49,50c50,51
+50,51c52,53
 <     // quicksort the subarray a[lo .. hi] using 3-way partitioning
 <     private static void sort(Comparable[] a, int lo, int hi, int depth) { 
 ---
 >     // quicksort the subarray a[lo .. hi]
 >     private static void sort(Comparable[] a, int lo, int hi) { 
-52c53,67
+53c55,66
 <         int j = lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1));
 ---
 > 		int i, j, N = hi - lo + 1;	// Number of elements
-> 		if (N == 2) {
-> 			if (less(a[hi], a[lo])) exch(a, lo, hi);
-> 			return;
-> 		}
-> 		if (N <= CUTOFF) j = lo + (hi - lo) / 2;		// middle element
+> 		if (N <= CUTOFF) j = lo + ((hi - lo) >> 1);
+> 		else if (N <= 40) j = median3(a, lo, lo + N/2, hi); // QuickX.java uses 40 
 > 		else {
 > 			int L = ((int)(Math.log(N) / Log2) - 1) | 1;	// odd(log2(N))
 > 			int[] index = new int[L];
 > 			int	D = (int)(N / L);		// Block size (= Distance)
-> 			j = lo + StdRandom.uniform(D);
+> 			j = lo + (int)(D * rand);
 > 			for (i = 0; i < L; i++, j += D) index[i] = j;
 > 			sortIndex(a, index, 0, L - 1);
 > 			j = index[L >> 1];			// middle index
 > 		}
-58c73
+59c72
 <         for (int i = lo; i < hole; i++) {
 ---
 >         for (i = lo; i < hole; i++) {
-75,76c90,91
+76,77c89,90
 <         sort(a, lo, hole - 1, depth);
 <         sort(a, (k < 0 ? hole : k) + 1, hi, depth);
 ---
 >         sort(a, lo, hole - 1);
 >         sort(a, (k < 0 ? hole : k) + 1, hi);
-79c94,116
-< 
----
+80a94,123
 > 	// quicksort the index[lo..hi] with the simplest hole method
 > 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi) {
 > 		if (hi <= lo) return;
@@ -67,3 +63,15 @@
 > 		sortIndex(a, index, lo, hole - 1);
 > 		sortIndex(a, index, hole + 1, hi);
 > 	}
+> 
+>     // return the index of the median element among a[i], a[j], and a[k]
+>     private static int median3(Comparable[] a, int i, int j, int k) {
+>         return (less(a[i], a[j]) ?
+>                (less(a[j], a[k]) ? j : less(a[i], a[k]) ? k : i) :
+>                (less(a[k], a[j]) ? j : less(a[k], a[i]) ? k : i));
+>     }
+82,83c125
+< 
+<    /***********************************************************************
+---
+>     /***********************************************************************
