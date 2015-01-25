@@ -1,4 +1,3 @@
-
 public class TestFat {
 	
 	/**
@@ -15,20 +14,20 @@ public class TestFat {
         java.util.Arrays.sort(wrk);
         double elapsedTime = timer.elapsedTime();
 //        fatObj.show(wrk);
-        if (fatObj.isSorted(wrk)) StdOut.println("Arrays.sort sec. = " + elapsedTime);
+        if (fatObj.isSorted(wrk)) StdOut.println("Arrays sec. = " + elapsedTime);
         wrk = src.clone();
         double startTime = timer.elapsedTime();
         QuickX.sort(wrk);
         elapsedTime = timer.elapsedTime();
 //      fatObj.show(wrk);
         if (fatObj.isSorted(wrk)) 
-        	StdOut.println("QuickX.sort sec. = " + ((int)((elapsedTime - startTime) * 1000)) / 1000.);
+        	StdOut.println("QuickX sec. = " + ((int)((elapsedTime - startTime) * 1000)) / 1000.);
         wrk = src.clone();
         startTime = timer.elapsedTime();
         QuickLog2.sort(wrk);
         elapsedTime = timer.elapsedTime();
 //      fatObj.show(wrk);
         if (fatObj.isSorted(wrk)) 
-        	StdOut.println("QuickLog2.sort sec. = " + ((int)((elapsedTime - startTime) * 1000)) / 1000.);
+        	StdOut.println("QuickLog2 sec. = " + ((int)((elapsedTime - startTime) * 1000)) / 1000.);
 	}
 }

@@ -42,6 +42,6 @@ public class ArraysSort {
         java.util.Arrays.sort(a);
         double elapsedTime = timer.elapsedTime();
         show(a);
-        if (isSorted(a)) StdOut.println("ArraysSort sec. = " + elapsedTime);
+        if (isSorted(a)) StdOut.println("Arrays sec. = " + elapsedTime);
     }
 }
