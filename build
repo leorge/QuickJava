@@ -36,3 +36,6 @@ if [ $? -ne 0 ]; then exit; fi
 
 # Make a dummy program
 javac -cp :. DummySort.java
+
+# Make a test program for a fat object
+javac -cp :. fatObj.java TestFat.java
