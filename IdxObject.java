@@ -1,17 +1,17 @@
 
 public class IdxObject implements Comparable<IdxObject> {
-	public final int	index;
-	public final String data;
-	
-	public IdxObject(int index, String data) {
-		this.index = index;
-		this.data = data;
-	}
-	
-	public int compareTo(IdxObject v) {
-		return	data.compareTo(v.data);
-	}
-	
+    public final int    index;
+    public final String data;
+    
+    public IdxObject(int index, String data) {
+        this.index = index;
+        this.data = data;
+    }
+    
+    public int compareTo(IdxObject v) {
+        return  data.compareTo(v.data);
+    }
+    
     /***********************************************************************
      *  Helper sorting functions
      ***********************************************************************/
@@ -47,7 +47,7 @@ public class IdxObject implements Comparable<IdxObject> {
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        int	N = a.length;
+        int N = a.length;
         IdxObject[] b = new IdxObject[N];
         for (int i = 0; i < N; i++) b[i] = new IdxObject(i, a[i]);
         Stopwatch timer = new Stopwatch();
