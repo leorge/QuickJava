@@ -1,7 +1,7 @@
 53,60c53,73
 <         int lt = lo, gt = hi;
 <         Comparable v = a[lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1))];
-<         int i = lo;	// why not lo+1?
+<         int i = lo;
 <         while (i <= gt) {
 <             int cmp = a[i].compareTo(v);
 <             if      (cmp < 0) exch(a, lt++, i++);

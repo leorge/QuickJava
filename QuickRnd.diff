@@ -9,12 +9,10 @@
 <     private static void sort(Comparable[] a, int lo, int hi) { 
 ---
 >     private static void sort(Comparable[] a, int lo, int hi, int depth) { 
-54,55c54,55
+54c54
 <         Comparable v = a[lo];
-<         int i = lo;
 ---
 >         Comparable v = a[lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1))];
->         int i = lo;	// why not lo+1?
 64,65c64,65
 <         sort(a, lo, lt-1);
 <         sort(a, gt+1, hi);
