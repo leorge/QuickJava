@@ -21,13 +21,34 @@
 > 		}
 58a63
 > 			depth--;
+64c69
+< 			sortIndex(a, index, 0, L - 1, L >> 1);
+---
+> 			sortIndex(a, index, 0, L - 1);
 89,90c94,95
 <         sort(a, lo, hole - 1);
 <         sort(a, (k < 0 ? hole : k) + 1, hi);
 ---
 >         sort(a, lo, hole - 1, depth);
 >         sort(a, (k < 0 ? hole : k) + 1, hi, depth);
-125c130
+95c100
+< 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi, int Nth) {
+---
+> 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi) {
+97c102
+< 		int hole = lo + ((hi - lo) >> 1);
+---
+> 		int hole = hi;
+100,101d104
+< 		index[hole] = index[hi];
+< 		hole = hi;
+116,117c119,120
+< 		if (Nth < hole) sortIndex(a, index, lo, hole - 1, Nth);
+< 		if (Nth > hole) sortIndex(a, index, hole + 1, hi, Nth);
+---
+> 		sortIndex(a, index, lo, hole - 1);
+> 		sortIndex(a, index, hole + 1, hi);
+127c130
 <     /***********************************************************************
 ---
 >    /***********************************************************************

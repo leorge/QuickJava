@@ -9,6 +9,10 @@
 >             insertionSort(a, lo, hi);
 >             return;
 > 		}
+64c67
+< 			sortIndex(a, index, 0, L - 1, L >> 1);
+---
+> 			sortIndex(a, index, 0, L - 1);
 93a97,103
 >     // sort from a[lo] to a[hi] using insertion sort
 >     private static void insertionSort(Comparable[] a, int lo, int hi) {
@@ -17,7 +21,24 @@
 >                 exch(a, j, j-1);
 >     }
 > 
-125c135
+95c105
+< 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi, int Nth) {
+---
+> 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi) {
+97c107
+< 		int hole = lo + ((hi - lo) >> 1);
+---
+> 		int hole = hi;
+100,101d109
+< 		index[hole] = index[hi];
+< 		hole = hi;
+116,117c124,125
+< 		if (Nth < hole) sortIndex(a, index, lo, hole - 1, Nth);
+< 		if (Nth > hole) sortIndex(a, index, hole + 1, hi, Nth);
+---
+> 		sortIndex(a, index, lo, hole - 1);
+> 		sortIndex(a, index, hole + 1, hi);
+127c135
 <     /***********************************************************************
 ---
 >    /***********************************************************************
