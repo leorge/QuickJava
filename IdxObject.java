@@ -51,7 +51,7 @@ public class IdxObject implements Comparable<IdxObject> {
         IdxObject[] b = new IdxObject[N];
         for (int i = 0; i < N; i++) b[i] = new IdxObject(i, a[i]);
         Stopwatch timer = new Stopwatch();
-        java.util.Arrays.sort(b);
+        QuickLog2.sort(b);
         for (int i = 0; i < N; i++) a[i] = b[i].data;
         double elapsedTime = timer.elapsedTime();
         show(a);
