@@ -34,6 +34,10 @@ if [ $? -ne 0 ]; then exit; fi
 javac -cp :. ArraysSort.java
 if [ $? -ne 0 ]; then exit; fi
 
+# Make a program for IdxObject
+javac -cp :. IdxObject.java
+if [ $? -ne 0 ]; then exit; fi
+
 # Make a dummy program
 javac -cp :. DummySort.java
 
