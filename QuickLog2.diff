@@ -26,7 +26,7 @@
 > 			int	D = (int)(N / L);		// Block size (= Distance)
 > 			j = lo + (int)(D * rand);
 > 			for (i = 0; i < L; i++, j += D) index[i] = j;
-> 			sortIndex(a, index, 0, L - 1);
+> 			sortIndex(a, index, 0, L - 1, L >> 1);
 > 			j = index[L >> 1];			// middle index
 > 		}
 59c72
@@ -39,13 +39,15 @@
 ---
 >         sort(a, lo, hole - 1);
 >         sort(a, (k < 0 ? hole : k) + 1, hi);
-80a94,123
+80a94,125
 > 	// quicksort the index[lo..hi] with the simplest hole method
-> 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi) {
+> 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi, int Nth) {
 > 		if (hi <= lo) return;
-> 		int hole = hi;
+> 		int hole = lo + ((hi - lo) >> 1);
 > 		int	last = index[hole];
 > 		Comparable v = a[last];
+> 		index[hole] = index[hi];
+> 		hole = hi;
 > 		int j = hi - 1;
 > 		for (int i = lo; i < hole; i++) {
 > 			if (a[index[i]].compareTo(v) >= 0) {
@@ -60,8 +62,8 @@
 > 			}
 > 		}
 > 		index[hole] = last;
-> 		sortIndex(a, index, lo, hole - 1);
-> 		sortIndex(a, index, hole + 1, hi);
+> 		if (Nth < hole) sortIndex(a, index, lo, hole - 1, Nth);
+> 		if (Nth > hole) sortIndex(a, index, hole + 1, hi, Nth);
 > 	}
 > 
 >     // return the index of the median element among a[i], a[j], and a[k]
@@ -70,7 +72,7 @@
 >                (less(a[j], a[k]) ? j : less(a[i], a[k]) ? k : i) :
 >                (less(a[k], a[j]) ? j : less(a[k], a[i]) ? k : i));
 >     }
-82,83c125
+82,83c127
 < 
 <    /***********************************************************************
 ---
