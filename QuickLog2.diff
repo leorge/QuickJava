@@ -14,7 +14,7 @@
 ---
 >     // quicksort the subarray a[lo .. hi]
 >     private static void sort(Comparable[] a, int lo, int hi) { 
-53c55,66
+53c55,67
 <         int j = lo + (depth++ < CUTOFF ? StdRandom.uniform(hi - lo + 1) : ((hi -  lo) >> 1));
 ---
 > 		int i, j, N = hi - lo + 1;	// Number of elements
@@ -26,20 +26,21 @@
 > 			int	D = (int)(N / L);		// Block size (= Distance)
 > 			j = lo + (int)(D * rand);
 > 			for (i = 0; i < L; i++, j += D) index[i] = j;
-> 			sortIndex(a, index, 0, L - 1, L >> 1);
-> 			j = index[L >> 1];			// middle index
+> 			int Nth = L >> 1;
+> 			sortIndex(a, index, 0, L - 1, Nth);
+> 			j = index[Nth];		// middle index
 > 		}
-59c72
+59c73
 <         for (int i = lo; i < hole; i++) {
 ---
 >         for (i = lo; i < hole; i++) {
-76,77c89,90
+76,77c90,91
 <         sort(a, lo, hole - 1, depth);
 <         sort(a, (k < 0 ? hole : k) + 1, hi, depth);
 ---
 >         sort(a, lo, hole - 1);
 >         sort(a, (k < 0 ? hole : k) + 1, hi);
-80a94,125
+80a95,126
 > 	// quicksort the index[lo..hi] with the simplest hole method
 > 	private static void sortIndex(Comparable[] a, int[] index, int lo, int hi, int Nth) {
 > 		if (hi <= lo) return;
@@ -72,7 +73,7 @@
 >                (less(a[j], a[k]) ? j : less(a[i], a[k]) ? k : i) :
 >                (less(a[k], a[j]) ? j : less(a[k], a[i]) ? k : i));
 >     }
-82,83c127
+82,83c128
 < 
 <    /***********************************************************************
 ---
