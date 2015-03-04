@@ -15,10 +15,14 @@ use strict;
 use warnings;
 $#ARGV < 0 && die "Usage : $0 data\n";
 our $TRACE = 1;
-@_ = &qsort(@ARGV);
-print "@_\n";
+my @result = &qsort(@ARGV);
+my @print = @result;
+while (@print) {
+	@_ = splice(@print, 0, 20);
+	print "@_\n";
+}
 my $j = 0;
-foreach my $i (@_) {
+foreach my $i (@result) {
 	$i >= $j || die "Not sorted!\n";
 	$j = $i;
 }
