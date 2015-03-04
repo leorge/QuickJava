@@ -1,4 +1,5 @@
 *.class
+*.swp
 tmp*
 META-INF/
 Std*.java
@@ -17,4 +18,3 @@ Test.java
 UnicodeTest.java
 mandrill.jpg
 stdlib.jar
-
